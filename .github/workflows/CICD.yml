@@ -43,6 +43,7 @@ jobs:
        run: echo "Code test "
        
   deploy: 
+   if: inputs.environment=='dev' 
    needs: [code,build,test]
    runs-on: ubuntu-latest
 
