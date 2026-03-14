@@ -1,11 +1,15 @@
 
 name: CICD
+
 on: 
   workflow_dispatch:
+    
+      
     
 
 
 jobs:
+
   code:
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +17,7 @@ jobs:
         run: echo " code clone from github"
         
   build:
+    needs: [code]
     runs-on: uubuntu-latest
 
     steps:
@@ -20,6 +25,7 @@ jobs:
         run: echo " Docker container build"
 
   test: 
+   needs: [code,build]
    runs-on: ubuntu-latest
 
    steps:
@@ -27,6 +33,7 @@ jobs:
        run: echo "Code test "
        
   deploy: 
+   needs: [code,build,test]
    runs-on: ubuntu-latest
 
    steps:
