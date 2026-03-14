@@ -18,7 +18,7 @@ jobs:
         
   build:
     needs: [code]
-    runs-on: uubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Build Docker container
